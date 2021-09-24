@@ -1,0 +1,25 @@
+{
+  "name": "react-a11y-audio-player",
+  "version": "0.0.0",
+  "description": "An accessible audio player with scrolling transcript",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "accessible",
+    "audio",
+    "player"
+  ],
+  "author": "justintemps",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
