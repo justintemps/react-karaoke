@@ -1,25 +1,38 @@
 {
   "name": "react-a11y-audio-player",
+  "description": "An accessible audio player with live transcript component",
   "version": "0.0.0",
-  "description": "An accessible audio player with scrolling transcript",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Justin Smith <jesmith627@gmail.com>",
+  "devDependencies": {
+    "syncpack": "^5.8.15"
+  },
+  "engines": {
+    "node": "16.2.0",
+    "npm": "7.x"
   },
   "keywords": [
-    "react",
+    "a11y",
     "accessible",
     "audio",
-    "player"
+    "player",
+    "react",
+    "transcript"
   ],
-  "author": "justintemps",
   "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "peerDependencies": {
-    "react": "17.x",
-    "react-dom": "17.x"
-  },
-  "devDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "start:demo": "rollup -c demo/rollup.config.js -w",
+    "syncpack:fix": "syncpack fix-mismatches -s package.json -s ./lib/package.json -s ./demo/package.json",
+    "syncpack:format": "syncpack format -s package.json -s ./lib/package.json -s ./demo/package.json"
+  },
+  "workspaces": [
+    "./lib",
+    "./demo"
+  ]
 }

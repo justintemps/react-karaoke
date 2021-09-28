@@ -1,0 +1,45 @@
+.play,
+.pause {
+  width: 75px;
+  height: 75px;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.progress_bar {
+  cursor: pointer;
+  width: 100%;
+  height: 4px;
+  border-radius: 10%;
+  background-color: black;
+  display: flex;
+  margin: 0.5rem 0 0;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    background: black;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+  }
+}
+
+.skip_button {
+  width: 32px;
+  height: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  position: absolute;
+  top: 1.5rem;
+  cursor: pointer;
+
+  &:nth-child(2) {
+    left: 4rem;
+  }
+}
