@@ -1,11 +1,12 @@
 {
-  "name": "react-a11y-audio-player-demo",
-  "description": "Demo of react-a11y-audio-player",
+  "name": "react-karaoke-demo",
+  "description": "Demo of react-karaoke",
   "version": "0.0.0",
   "author": "Justin Smith <jesmith627@gmail.com>",
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "rollup-plugin-serve": "^1.1.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
@@ -21,7 +22,6 @@
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.1",
-    "rollup-plugin-serve": "^1.1.0",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.4.3",
     "typescript-plugin-css-modules": "^3.4.0"

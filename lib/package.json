@@ -1,10 +1,12 @@
 {
-  "name": "react-a11y-audio-player",
-  "description": "react-a11y-audio-player package",
+  "name": "react-karaoke",
+  "description": "react-karaoke package",
   "version": "0.0.0",
   "author": "Justin Smith <jesmith627@gmail.com>",
   "dependencies": {
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "framer-motion": "^4.1.17",
+    "react-scrollbars-custom": "^4.0.27"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
@@ -27,7 +29,10 @@
     "typescript": "^4.4.3",
     "typescript-plugin-css-modules": "^3.4.0"
   },
-  "exports": "./index.ts",
+  "exports": [
+    "./index.ts",
+    "./controls.ts"
+  ],
   "license": "Apache-2.0",
   "main": "index.ts",
   "peerDependencies": {

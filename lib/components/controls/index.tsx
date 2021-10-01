@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classnames from "classnames";
 import React, { useRef } from "react";
 import styles from "./controls.module.scss";
 
@@ -15,25 +15,21 @@ interface PlayProps extends Props {
 const Play: React.FC<PlayProps> = ({
   onClick = () => {},
   style,
-  className,
   disabled,
+  className,
 }) => {
   return (
     <button
       disabled={disabled}
-      data-cy="play_button"
       aria-label="Play"
       onClick={onClick}
       style={style}
-      className={`${styles.play} ${className}`}
+      className={classnames(styles.play, className)}
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <g>
-          <circle cx="20" cy="20" r="19" />
-          <path
-            fill="var(--ilo-dark-blue)"
-            d="M31.334 19.667l-19.333 9.666V10z"
-          />
+          <circle cx="20" cy="20" r="19" fill="black" />
+          <path fill="white" d="M31.334 19.667l-19.333 9.666V10z" />
         </g>
       </svg>
     </button>
@@ -43,16 +39,15 @@ const Play: React.FC<PlayProps> = ({
 const Pause: React.FC<Props> = ({ onClick = () => {}, style, className }) => {
   return (
     <button
-      data-cy="pause_button"
       aria-label="Pause"
       onClick={onClick}
       style={style}
-      className={`${styles.pause} ${className}`}
+      className={classnames(styles.pause, className)}
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
         <g>
-          <circle cx="20" cy="20" r="19" />
-          <path d="M13 12h4v16h-4zm10 0h4v16h-4z" fill="var(--ilo-dark-blue)" />
+          <circle cx="20" cy="20" r="19" fill="black" />
+          <path d="M13 12h4v16h-4zm10 0h4v16h-4z" fill="white" />
         </g>
       </svg>
     </button>
@@ -62,14 +57,15 @@ const Pause: React.FC<Props> = ({ onClick = () => {}, style, className }) => {
 interface ProgressBarProps {
   handleSetProgress: (percentClick: number) => void;
   progress: number | string;
+  className?: string;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   handleSetProgress,
   progress = 0,
+  className,
 }) => {
   const progressBar = useRef<HTMLDivElement>(null);
-
   function handleClick(e: React.MouseEvent<HTMLDivElement>) {
     if (progressBar && progressBar.current) {
       const { width } = progressBar.current.getBoundingClientRect();
@@ -78,19 +74,17 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     }
   }
 
+  const progressCss = { "--progress": `${progress}` } as React.CSSProperties;
+
   return (
-    <>
+    <div className={classnames(styles.progress_bar_wrapper, className)}>
       <div
         ref={progressBar}
         onClick={handleClick}
         className={styles.progress_bar}
+        style={progressCss}
       ></div>
-      {/* <style jsx>{`
-        .${styles.progress_bar}:after {
-          transform: scaleX(${progress});
-        }
-      `}</style> */}
-    </>
+    </div>
   );
 };
 
@@ -112,7 +106,7 @@ const SkipButton: React.FC<SkipButtonProps> = ({
     direction === "forward" ? `+${increment}` : `-${increment}`;
 
   function handleClick() {
-    const seconds = direction === "forward" ? 10 : -10;
+    const seconds = direction === "forward" ? increment : -1 * increment;
     handleSkip(seconds);
   }
 
@@ -150,4 +144,5 @@ const SkipButton: React.FC<SkipButtonProps> = ({
     </>
   );
 };
+
 export { Play, Pause, ProgressBar, SkipButton };

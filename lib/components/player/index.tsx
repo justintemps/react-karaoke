@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import useAudio from "../../hooks/useAudio";
 import { AudioOptions, AudioState } from "../../types";
 import { Pause, Play, ProgressBar, SkipButton } from "../controls";
 import styles from "./player.module.scss";
+import { KaraokeCtx } from "../karaoke";
 
 interface AudioPlayerProps extends AudioOptions {
   onUpdate?: (audioState: AudioState) => void;
@@ -11,11 +12,13 @@ interface AudioPlayerProps extends AudioOptions {
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ onUpdate, ...options }) => {
   const { state: playerState, controls } = useAudio(options);
 
-  // Hanlde onUpdate callback
+  const { setKaraoke } = useContext(KaraokeCtx);
+
   useEffect(() => {
     if (onUpdate && typeof onUpdate === "function") {
       onUpdate(playerState);
     }
+    setKaraoke(playerState);
   }, [playerState]);
 
   function handleStartPause() {
@@ -56,18 +59,24 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ onUpdate, ...options }) => {
   return (
     <div className={styles.player}>
       {!playerState.paused ? (
-        <Pause onClick={handleStartPause} />
+        <Pause onClick={handleStartPause} className={styles.play_pause} />
       ) : (
         <Play
           onClick={handleStartPause}
           disabled={!playerState.canplaythrough}
+          className={styles.play_pause}
         />
       )}
       <div className={styles.skip_buttons}>
         <SkipButton handleSkip={handleSkip} direction="rewind" />
         <SkipButton handleSkip={handleSkip} direction="forward" />
       </div>
-      <ProgressBar handleSetProgress={handleSetProgress} progress={progress} />
+      <div className={styles.progress_bar}>
+        <ProgressBar
+          handleSetProgress={handleSetProgress}
+          progress={progress}
+        />
+      </div>
       <div
         className={styles.time_remaining}
       >{`${timeRemaining.minutes}:${timeRemaining.seconds}`}</div>

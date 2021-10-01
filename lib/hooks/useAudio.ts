@@ -9,7 +9,7 @@ const initialState: AudioState = {
   ended: false,
 };
 
-const useAudioPlayer = ({
+const useAudio = ({
   src,
   crossorigin = null,
   loop = false,
@@ -143,7 +143,7 @@ const useAudioPlayer = ({
     audio.current.loop = loop;
   }, [muted, loop]);
 
-  return { state, controls, audioElement: audio };
+  return { state, controls, audioEl: audio };
 };
 
-export default useAudioPlayer;
+export default useAudio;

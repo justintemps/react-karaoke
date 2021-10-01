@@ -1,45 +1,57 @@
 .play,
-.pause {
-  width: 75px;
-  height: 75px;
-  border: 0;
+.pause,
+.skip_button,
+.progress_bar {
   padding: 0;
-  background: none;
+  margin: 0;
   cursor: pointer;
+}
+
+.play,
+.pause {
+  width: 60px;
+  height: 60px;
+  border: 0;
+  background: none;
   outline: none;
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.progress_bar_wrapper {
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  display: flex;
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .progress_bar {
-  cursor: pointer;
   width: 100%;
-  height: 4px;
-  border-radius: 10%;
-  background-color: black;
-  display: flex;
-  margin: 0.5rem 0 0;
-  overflow: hidden;
+  height: 100%;
+  position: relative;
 
   &:after {
     content: "";
-    background: black;
+    position: absolute;
+    background: grey;
     width: 100%;
     height: 100%;
     transform-origin: left;
+    transform: scaleX(var(--progress));
   }
 }
 
 .skip_button {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border: none;
-  position: absolute;
-  top: 1.5rem;
-  cursor: pointer;
-
-  &:nth-child(2) {
-    left: 4rem;
-  }
 }

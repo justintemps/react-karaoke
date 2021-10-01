@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "target": "es5",
     "module": "esnext",

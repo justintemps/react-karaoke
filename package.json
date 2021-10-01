@@ -1,5 +1,5 @@
 {
-  "name": "react-a11y-audio-player",
+  "name": "react-karaoke",
   "description": "An accessible audio player with live transcript component",
   "version": "0.0.0",
   "author": "Justin Smith <jesmith627@gmail.com>",
@@ -11,6 +11,7 @@
     "npm": "7.x"
   },
   "keywords": [
+    "karaoke",
     "a11y",
     "accessible",
     "audio",
@@ -27,6 +28,7 @@
   },
   "scripts": {
     "build": "rollup -c rollup.config.js",
+    "dev": "npm run start:demo",
     "start:demo": "rollup -c demo/rollup.config.js -w",
     "syncpack:fix": "syncpack fix-mismatches -s package.json -s ./lib/package.json -s ./demo/package.json",
     "syncpack:format": "syncpack format -s package.json -s ./lib/package.json -s ./demo/package.json"

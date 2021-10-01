@@ -1,6 +1,5 @@
-import AudioPlayer from "./components/player";
+import Player from "./components/player";
 import useAudio from "./hooks/useAudio";
+import Karaoke from "./components/karaoke";
 
-export { useAudio };
-
-export default AudioPlayer;
+export { Player, Karaoke, useAudio };
