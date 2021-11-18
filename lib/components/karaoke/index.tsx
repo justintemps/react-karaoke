@@ -30,8 +30,6 @@ const Karaoke: React.FC = ({ children }) => {
 
   const ctx = { karaokeState: audioState, setKaraoke };
 
-  console.log(audioState);
-
   return <KaraokeCtx.Provider value={ctx}>{children}</KaraokeCtx.Provider>;
 };
 

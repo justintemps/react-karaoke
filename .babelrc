@@ -1,0 +1,10 @@
+{
+  "presets": [
+    [
+      "react",
+      {
+        "modules": false
+      }
+    ]
+  ]
+}

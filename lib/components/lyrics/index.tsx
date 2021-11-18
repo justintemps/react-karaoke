@@ -1,14 +1,13 @@
 import { animate } from "framer-motion";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import Scrollbar from "react-scrollbars-custom";
 import { ScrollState } from "react-scrollbars-custom/dist/types/types";
 import srt2Json from "../../utils/srt2json";
+import { KaraokeCtx } from "../karaoke";
 import styles from "./lyrics.module.scss";
 
 interface Props {
   srt: string;
-  time?: number;
-  paused: boolean;
 }
 
 interface Caption {
@@ -28,7 +27,6 @@ const Caption: React.FC<CaptionLine> = ({ text, id, selected }) => (
   <p
     style={{
       fontWeight: selected ? 700 : 400,
-      color: "black",
     }}
     id={`caption-${id}`}
   >
@@ -36,7 +34,11 @@ const Caption: React.FC<CaptionLine> = ({ text, id, selected }) => (
   </p>
 );
 
-const LiveTranscript: React.FC<Props> = ({ srt, time, paused = true }) => {
+const LiveTranscript: React.FC<Props> = ({ srt }) => {
+  const { karaokeState } = useContext(KaraokeCtx);
+
+  const { currentTime: time } = karaokeState;
+
   const captions: Caption[] = useMemo(() => srt2Json(srt), [srt]);
   const [currentCaption, setCurrentCaption] = useState<Caption>(captions[0]);
   const [scrollTop, setScrollTop] = useState<number>(0);
@@ -113,13 +115,13 @@ const LiveTranscript: React.FC<Props> = ({ srt, time, paused = true }) => {
           trackYProps={{
             style: {
               opacity: 1,
-              background: "var(--ilo-dark-blue)",
+              background: "grey",
             },
           }}
           thumbYProps={{
             style: {
               opacity: 1,
-              background: "var(--ilo-yellow)",
+              background: "black",
             },
           }}
         >
