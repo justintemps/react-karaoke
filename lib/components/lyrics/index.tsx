@@ -1,4 +1,4 @@
-import { animate } from "framer-motion";
+import animate from "../../utils/animate";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import Scrollbar from "react-scrollbars-custom";
 import { ScrollState } from "react-scrollbars-custom/dist/types/types";
@@ -84,7 +84,8 @@ const LiveTranscript: React.FC<Props> = ({ srt }) => {
     scrollTo(caption?.offsetTop);
   }, [currentCaption]);
 
-  function scrollTo(to: number | undefined, duration: number = 0.5) {
+  function scrollTo(target: number | undefined, duration: number = 750) {
+    const to = target ?? 0;
     animate(scrollTop, to, {
       duration,
       onUpdate: (v) => {
