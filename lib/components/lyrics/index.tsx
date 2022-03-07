@@ -23,9 +23,13 @@ interface CaptionLine {
   selected: boolean;
 }
 
-const Caption: React.FC<CaptionLine> = ({ text, id, selected }) => (
-  <p id={`caption-${id}`}>{text}</p>
-);
+const Caption: React.FC<CaptionLine> = ({ text, id, selected }) => {
+  // Don't render a caption if it doesn't have any text
+  if (!text || text.length === 0) {
+    return null;
+  }
+  return <p id={`rk-caption-${id}`}>{text}</p>;
+};
 
 const Lyrics: React.FC<Props> = ({ srt }) => {
   const { karaokeState } = useContext(KaraokeCtx);
@@ -74,7 +78,7 @@ const Lyrics: React.FC<Props> = ({ srt }) => {
 
   useEffect(() => {
     const { id } = currentCaption;
-    const caption = document.getElementById(`caption-${id}`);
+    const caption = document.getElementById(`rk-caption-${id}`);
     scrollTo(caption?.offsetTop);
   }, [currentCaption]);
 
@@ -109,6 +113,8 @@ const Lyrics: React.FC<Props> = ({ srt }) => {
           }}
           trackYProps={{
             style: {
+              height: "100%",
+              top: 0,
               opacity: 1,
               background: "grey",
             },
