@@ -4,4 +4,4 @@ React Karaoke is an accessible audio player for react that includes a Karoke com
 
 ## Installation
 
-`npm install react-karaoke-player`
+`npm install react-karaoke`

@@ -1,7 +1,7 @@
-import animate from "../../utils/animate";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import Scrollbar from "react-scrollbars-custom";
 import { ScrollState } from "react-scrollbars-custom/dist/types/types";
+import animate from "../../utils/animate";
 import srt2Json from "../../utils/srt2json";
 import { KaraokeCtx } from "../karaoke";
 import styles from "./lyrics.module.scss";
@@ -24,17 +24,10 @@ interface CaptionLine {
 }
 
 const Caption: React.FC<CaptionLine> = ({ text, id, selected }) => (
-  <p
-    style={{
-      fontWeight: selected ? 700 : 400,
-    }}
-    id={`caption-${id}`}
-  >
-    {text}
-  </p>
+  <p id={`caption-${id}`}>{text}</p>
 );
 
-const LiveTranscript: React.FC<Props> = ({ srt }) => {
+const Lyrics: React.FC<Props> = ({ srt }) => {
   const { karaokeState } = useContext(KaraokeCtx);
 
   const { currentTime: time } = karaokeState;
@@ -52,6 +45,7 @@ const LiveTranscript: React.FC<Props> = ({ srt }) => {
     setScrollTop(scroll.scrollTop);
   }
 
+  // Determines the current caption based on time
   useEffect(() => {
     const { start, end } = currentCaption;
     // If no time is given, don't do anything
@@ -142,4 +136,4 @@ const LiveTranscript: React.FC<Props> = ({ srt }) => {
   );
 };
 
-export default LiveTranscript;
+export default Lyrics;
