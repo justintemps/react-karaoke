@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Karaoke, Player, Lyrics } from "react-karaoke-player";
-
+import { Karaoke, Lyrics, Player } from "react-karaoke-player";
 import srt from "../public/srt";
 
 const audio =
@@ -25,7 +24,7 @@ ReactDOM.render(
       alignItems: "center",
     }}
   >
-    <h1>React Karaoke Player</h1>
+    <h1>React Karaoke</h1>
     <div style={{ width: "500px" }}>
       <App />
     </div>
