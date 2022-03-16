@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pause button renders correctly 1`] = `
+<button
+  aria-label="Pause"
+  className="pause"
+  data-testid="rk-pause-button"
+  onClick={[Function]}
+>
+  <svg
+    viewBox="0 0 40 40"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g>
+      <circle
+        cx="20"
+        cy="20"
+        fill="black"
+        r="19"
+      />
+      <path
+        d="M13 12h4v16h-4zm10 0h4v16h-4z"
+        fill="white"
+      />
+    </g>
+  </svg>
+</button>
+`;
+
+exports[`Play button renders correctly 1`] = `
+<button
+  aria-label="Play"
+  className="play"
+  data-testid="rk-play-button"
+  disabled={false}
+  onClick={[Function]}
+>
+  <svg
+    viewBox="0 0 40 40"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g>
+      <circle
+        cx="20"
+        cy="20"
+        fill="black"
+        r="19"
+      />
+      <path
+        d="M31.334 19.667l-19.333 9.666V10z"
+        fill="white"
+      />
+    </g>
+  </svg>
+</button>
+`;
+
+exports[`ProgressBar renders correctly 1`] = `
+<div
+  className="progress_bar_wrapper"
+>
+  <div
+    className="progress_bar"
+    data-testid="rk-progress-bar"
+    onClick={[Function]}
+    style={
+      Object {
+        "--progress": "50",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Skip button renders correctly as fast forward 1`] = `
+<button
+  aria-label="Forward 10 seconds"
+  className="skip_button"
+  data-testid="rk-skip-button-forward"
+  onClick={[Function]}
+>
+  <svg
+    preserveAspectRatio="xMidYMid meet"
+    version="1.1"
+    viewBox="0 0 200 200"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="100"
+      cy="100"
+      fill="white"
+      r="98"
+      stroke="black"
+      strokeWidth="4"
+    />
+    <text
+      style={
+        Object {
+          "font": "115px monospace",
+        }
+      }
+      textLength="170"
+      x="16"
+      y="135"
+    >
+      +10
+    </text>
+  </svg>
+</button>
+`;
+
+exports[`Skip button renders correctly as rewind 1`] = `
+<button
+  aria-label="Rewind 10 seconds"
+  className="skip_button"
+  data-testid="rk-skip-button-rewind"
+  onClick={[Function]}
+>
+  <svg
+    preserveAspectRatio="xMidYMid meet"
+    version="1.1"
+    viewBox="0 0 200 200"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="100"
+      cy="100"
+      fill="white"
+      r="98"
+      stroke="black"
+      strokeWidth="4"
+    />
+    <text
+      style={
+        Object {
+          "font": "115px monospace",
+        }
+      }
+      textLength="170"
+      x="16"
+      y="135"
+    >
+      -10
+    </text>
+  </svg>
+</button>
+`;

@@ -1,6 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import renderer from "react-test-renderer";
 import { Pause, Play, ProgressBar, SkipButton } from ".";
 
 function testButtonClick(
@@ -26,28 +27,65 @@ function testSkipButtonClick(direction: "forward" | "rewind") {
   expect(cb.mock.calls[0][0]).toBe(expected);
 }
 
-describe("Controls are interactive", () => {
+describe("Play button", () => {
+  it("renders correctly", () => {
+    const tree = renderer.create(<Play onClick={() => {}} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("correctly handles click", () => {
+    testButtonClick(Play, "rk-play-button");
+  });
+});
+
+describe("Pause button", () => {
+  it("renders correctly", () => {
+    const tree = renderer.create(<Pause onClick={() => {}} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("correctly handles click", () => {
+    testButtonClick(Pause, "rk-pause-button");
+  });
+});
+
+describe("Skip button", () => {
+  it("renders correctly as fast forward", () => {
+    const tree = renderer
+      .create(<SkipButton direction="forward" handleSkip={() => {}} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("renders correctly as rewind", () => {
+    const tree = renderer
+      .create(<SkipButton direction="rewind" handleSkip={() => {}} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("passes positive int to click handler", () => {
+    testSkipButtonClick("forward");
+  });
+
+  it("passes negative int to click handler", () => {
+    testSkipButtonClick("rewind");
+  });
+});
+
+describe("ProgressBar", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test("Play button handles click", () => {
-    testButtonClick(Play, "rk-play-button");
+  it("renders correctly", () => {
+    const tree = renderer
+      .create(<ProgressBar progress={50} handleSetProgress={() => {}} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
-  test("Pause button handles click", () => {
-    testButtonClick(Pause, "rk-pause-button");
-  });
-
-  test("Forward skip button passes +increment to click handler", () => {
-    testSkipButtonClick("forward");
-  });
-
-  test("Rewind skip button passes -increment to click handler", () => {
-    testSkipButtonClick("rewind");
-  });
-
-  test("ProgressBar passes percent to click handler", () => {
+  it("passes percent to click handler", () => {
     const WIDTH = 500;
     const CLICK_LOCATION = 250;
 
