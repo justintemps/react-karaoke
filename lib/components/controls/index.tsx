@@ -68,6 +68,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
 }) => {
   const progressBar = useRef<HTMLDivElement>(null);
+
   function handleClick(e: React.MouseEvent<HTMLDivElement>) {
     if (progressBar && progressBar.current) {
       const { width } = progressBar.current.getBoundingClientRect();
@@ -79,15 +80,13 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const progressCss = { "--progress": `${progress}` } as React.CSSProperties;
 
   return (
-    <div
-      className={classnames(styles.progress_bar_wrapper, className)}
-      data-testid="rk-progress-bar"
-    >
+    <div className={classnames(styles.progress_bar_wrapper, className)}>
       <div
         ref={progressBar}
         onClick={handleClick}
         className={styles.progress_bar}
         style={progressCss}
+        data-testid="rk-progress-bar"
       ></div>
     </div>
   );
