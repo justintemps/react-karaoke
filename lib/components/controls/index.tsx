@@ -9,17 +9,18 @@ interface Props {
 }
 
 interface PlayProps extends Props {
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const Play: React.FC<PlayProps> = ({
   onClick = () => {},
   style,
-  disabled,
+  disabled = false,
   className,
 }) => {
   return (
     <button
+      data-testid="rk-play-button"
       disabled={disabled}
       aria-label="Play"
       onClick={onClick}
@@ -39,6 +40,7 @@ const Play: React.FC<PlayProps> = ({
 const Pause: React.FC<Props> = ({ onClick = () => {}, style, className }) => {
   return (
     <button
+      data-testid="rk-pause-button"
       aria-label="Pause"
       onClick={onClick}
       style={style}
@@ -77,7 +79,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const progressCss = { "--progress": `${progress}` } as React.CSSProperties;
 
   return (
-    <div className={classnames(styles.progress_bar_wrapper, className)}>
+    <div
+      className={classnames(styles.progress_bar_wrapper, className)}
+      data-testid="rk-progress-bar"
+    >
       <div
         ref={progressBar}
         onClick={handleClick}
@@ -116,6 +121,7 @@ const SkipButton: React.FC<SkipButtonProps> = ({
         aria-label={ariaLabel}
         className={styles.skip_button}
         onClick={handleClick}
+        data-testid={`rk-skip-button-${direction}`}
       >
         <svg
           viewBox="0 0 200 200"
