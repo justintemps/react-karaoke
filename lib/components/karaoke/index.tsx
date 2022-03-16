@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AudioState } from "../../types";
 
-interface KaraokeCtx {
+export interface KaraokeCtx {
   karaokeState: AudioState;
   setKaraoke: (partialAudioState: Partial<AudioState>) => void;
 }

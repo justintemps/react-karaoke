@@ -20,15 +20,21 @@ interface Caption {
 interface CaptionLine {
   text: string;
   id: number;
-  selected: boolean;
+  active: boolean;
 }
 
-const Caption: React.FC<CaptionLine> = ({ text, id, selected }) => {
+const Caption: React.FC<CaptionLine> = ({ text, id, active }) => {
   // Don't render a caption if it doesn't have any text
   if (!text || text.length === 0) {
     return null;
   }
-  return <p id={`rk-caption-${id}`}>{text}</p>;
+  return active ? (
+    <p data-rk-active id={`rk-caption-${id}`}>
+      {text}
+    </p>
+  ) : (
+    <p id={`rk-caption-${id}`}>{text}</p>
+  );
 };
 
 const Lyrics: React.FC<Props> = ({ srt }) => {
@@ -132,7 +138,7 @@ const Lyrics: React.FC<Props> = ({ srt }) => {
                 key={id}
                 id={id}
                 text={text}
-                selected={id == currentCaption.id}
+                active={id == currentCaption.id}
               />
             ))}
           </div>
