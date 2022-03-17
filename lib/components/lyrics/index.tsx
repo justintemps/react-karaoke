@@ -29,11 +29,13 @@ const Caption: React.FC<CaptionLine> = ({ text, id, active }) => {
     return null;
   }
   return active ? (
-    <p data-rk-active id={`rk-caption-${id}`}>
+    <p data-rk-active id={`rk-caption-${id}`} data-testid="rk-caption">
       {text}
     </p>
   ) : (
-    <p id={`rk-caption-${id}`}>{text}</p>
+    <p id={`rk-caption-${id}`} data-testid="rk-caption">
+      {text}
+    </p>
   );
 };
 

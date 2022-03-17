@@ -1,6 +1,5 @@
 import { render, RenderOptions } from "@testing-library/react";
 import React, { ReactElement } from "react";
-import renderer from "react-test-renderer";
 import Lyrics from ".";
 import { KaraokeCtx } from "../karaoke";
 
@@ -44,7 +43,26 @@ describe("Lyrics", () => {
     setKaraoke: () => {},
   };
 
-  it("sets the correct line to be active", () => {
+  it("renders all of the lyrics", () => {
+    const { getAllByTestId } = customRender(<Lyrics srt={srt} />, {
+      providerValue,
+    });
+    const lyrics = getAllByTestId("rk-caption");
+    expect(lyrics.length).toBe(3);
+  });
+
+  it("has only one active lyric", () => {
+    const { getAllByTestId } = customRender(<Lyrics srt={srt} />, {
+      providerValue,
+    });
+    const lyrics = getAllByTestId("rk-caption");
+    const activeLyric = lyrics.filter(
+      (lyric) => lyric.getAttribute("data-rk-active") === "true"
+    );
+    expect(activeLyric.length).toBe(1);
+  });
+
+  it("sets the correct lyric to be active", () => {
     const { getByText } = customRender(<Lyrics srt={srt} />, {
       providerValue,
     });
