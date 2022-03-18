@@ -18,16 +18,12 @@ const App = () => {
 ReactDOM.render(
   <div
     style={{
-      display: "flex",
-      justifyContent: "center",
-      flexFlow: "column",
-      alignItems: "center",
+      margin: "0 auto",
+      width: "500px",
     }}
   >
     <h1>React Karaoke</h1>
-    <div style={{ width: "500px" }}>
-      <App />
-    </div>
+    <App />
   </div>,
   document.getElementById("player")
 );
